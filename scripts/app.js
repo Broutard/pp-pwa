@@ -166,7 +166,8 @@
    ****************************************************************************/
 
     app.getHome = function() {
-        var url = 'http://www.purepeople.com/mobile/v3/hp/device/android';
+        // var url = 'http://www.purepeople.com/mobile/v3/hp/device/android';
+        var url = 'https://secure.webedia.fr/pxy.php?q=http://www.purepeople.com/mobile/v3/hp/device/android';
 
         // Fetch the latest data.
         var request = new XMLHttpRequest();
@@ -184,13 +185,14 @@
             // app.updateForecastCard(initialWeatherForecast);
           }
         };
-        request.open('GET', url);
+        request.open('GET', url, true);
         request.send();
 
     };
 
     app.getArticle = function(id) {
-        var url = 'http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
+        // var url = 'http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
+        var url = 'https://secure.webedia.fr/pxy.php?q=http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
 
         // Fetch the latest data.
         var request = new XMLHttpRequest();
@@ -208,7 +210,7 @@
             // app.updateForecastCard(initialWeatherForecast);
           }
         };
-        request.open('GET', url);
+        request.open('GET', url, true);
         request.send();
 
     };
