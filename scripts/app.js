@@ -78,6 +78,7 @@
 
   app.showHome = function(data) {
     var container = app.containerHome;
+
     // show articles
     if(data.list) {
         for(var i=data.list.length-1; i>=0; i--) {
@@ -169,6 +170,26 @@
         // var url = 'http://www.purepeople.com/mobile/v3/hp/device/android';
         var url = 'https://secure.webedia.fr/pxy.php?q=http://www.purepeople.com/mobile/v3/hp/device/android';
 
+        // Cache logic here
+        if ('caches' in window) {
+          /*
+           * Check if the service worker has already cached this request
+           * data. If the service worker has the data, then display the cached
+           * data while the app fetches the latest data.
+           */
+          caches.match(url).then(function(response) {
+            console.log('cache found', response);
+            if (response) {
+              response.json().then(function updateFromCache(results) {
+                // results.key = key;
+                // results.label = label;
+                // results.created = json.query.created;
+                app.showHome(results);
+              });
+            }
+          });
+        }
+
         // Fetch the latest data.
         var request = new XMLHttpRequest();
         request.onreadystatechange = function() {
@@ -193,6 +214,26 @@
     app.getArticle = function(id) {
         // var url = 'http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
         var url = 'https://secure.webedia.fr/pxy.php?q=http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
+
+        // Cache logic here
+        if ('caches' in window) {
+          /*
+           * Check if the service worker has already cached this request
+           * data. If the service worker has the data, then display the cached
+           * data while the app fetches the latest data.
+           */
+          caches.match(url).then(function(response) {
+            console.log('cache found', response);
+            if (response) {
+              response.json().then(function updateFromCache(results) {
+                // results.key = key;
+                // results.label = label;
+                // results.created = json.query.created;
+                app.showArticle(results);
+              });
+            }
+          });
+        }
 
         // Fetch the latest data.
         var request = new XMLHttpRequest();
