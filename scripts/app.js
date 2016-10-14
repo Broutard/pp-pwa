@@ -97,7 +97,7 @@
                 var d = new Date(article.date_published * 1000);
                 card.dataset.id = article.id;
                 if(article.medias.length)
-                    card.querySelector('.image').src = article.medias[0].image.replace('[WBFORMAT]', '100x100');
+                    card.querySelector('.image').src = article.medias[0].image.replace('[WBFORMAT]', '100x100').replace('http://static1.', 'https://static1-ssl.');
                 card.querySelector('.date').textContent = [d.getDate(), (d.getMonth() + 1)].join('/') + ' ' + [d.getHours(), d.getMinutes()].join(':');
                 card.querySelector('.date').textContent += ' (updated at ' + (new Date()).toISOString() + ')';
                 card.querySelector('.title').textContent = article.title;
@@ -141,7 +141,7 @@
     container.querySelector('.slideshow').innerHTML = '';
     medias.forEach(function(media) {
         var img = new Image();
-        img.src = media.image.replace('[WBFORMAT]', '100x100');
+        img.src = media.image.replace('[WBFORMAT]', '100x100').replace('http://static1.', 'https://static1-ssl.');
         container.querySelector('.slideshow').appendChild(img);
     });
 
