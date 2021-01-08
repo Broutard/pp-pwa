@@ -167,7 +167,7 @@
    ****************************************************************************/
 
     app.getHome = function() {
-        var url = 'http://www.purepeople.com/mobile/v3/hp/device/android';
+        var url = 'https://www.purepeople.com/mobile/v3/hp/device/android';
 //         var url = 'https://secure.webedia.fr/pxy.php?q=http://www.purepeople.com/mobile/v3/hp/device/android';
 
         // Cache logic here
@@ -212,7 +212,7 @@
     };
 
     app.getArticle = function(id) {
-        var url = 'http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
+        var url = 'https://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
 //         var url = 'https://secure.webedia.fr/pxy.php?q=http://www.purepeople.com/mobile/v3/article/device/android/id/' + id;
 
         // Cache logic here
